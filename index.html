@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="pracstyles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice</title>
+</head>
+
+<body>
+
+  <p class="first">List Of Universities</p>
+
+  <table id="rankings-table" class="content-table">
+    <p>Wassssssssssaaaaaaaaaaaaaaaaaappppp yooooooooooo</p>
+    <hr>
+
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>In-Charge</th>
+        <th>Activities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>LOL Universiti</td>
+        <td>animie verse</td>
+        <td>tooo lazyyyyyyy</td>
+        <td>tooo lazyyyyyyy</td>
+
+      </tr>
+      <td>1</td>
+      <td>LOL Universiti</td>
+      <td>animie verse</td>
+      <td>tooo lazyyyyyyy</td>
+      <td>tooo lazyyyyyyy</td>
+
+      </tr>
+      <td>1</td>
+      <td>LOL Universiti</td>
+      <td>animie verse</td>
+      <td>tooo lazyyyyyyy</td>
+      <td>tooo lazyyyyyyy</td>
+
+      </tr>
+      <td>1</td>
+      <td>LOL Universiti</td>
+      <td>animie verse</td>
+      <td>tooo lazyyyyyyy</td>
+      <td>tooo lazyyyyyyy</td>
+
+      </tr>
+      <td>1</td>
+      <td>LOL Universiti</td>
+      <td>animie verse</td>
+      <td>tooo lazyyyyyyy</td>
+      <td>tooo lazyyyyyyy</td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="university.js"></script>
+  <script src="activity.js"></script>
+  <script type="text/javascript">
+
+    window.onload = loadRankings;
+    
+    const rankingsBody = document.querySelector("#rankings-table > tbody");
+
+    function loadRankings() {
+
+      const request = new XMLHttpRequest();
+      const request2 = new XMLHttpRequest();
+
+      request.open("get", "data/rankings.json", true);
+      request.onload = () => {
+
+        try {
+          const universites = JSON.parse(request.responseText);
+
+          request2.open("get", "data/activities.json", true);
+          request2.onload = () => {
+            const activities = JSON.parse(request2.responseText);
+
+            populateRankings(universites, activities);
+          };
+          request2.send();
+
+          
+          
+
+
+        } catch (e) {
+
+
+          console.warn("Could not load");
+        }
+
+
+
+      };
+      request.send();
+
+    }
+
+function populateRankings(u, a){
+  for(let i = 0; i < u.length; i++){
+    let uni = new University(u[i].name);
+    let acts = [];
+
+    for(let k = 0; k < a.length; k++){
+      let act = new Activity(a[k].name);
+
+      if(act.getActivityName() == u[i].activities[k]){
+        acts.push(act);
+      }
+    }
+
+    uni.setActivity(acts);
+    console.log(uni);
+  }
+}
+
+
+  </script>
+
+
+</body>
+
+</html>
