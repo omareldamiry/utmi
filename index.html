@@ -123,8 +123,39 @@
         }
 
         uni.setActivity(acts);
+        generateRecord(uni, i+1);
         console.log(uni);
       }
+    }
+
+    function generateRecord(university, index){
+      
+      const record = document.createElement("tr");
+      const number = document.createElement("td");
+      const name = document.createElement("td");
+      const country = document.createElement("td");
+      const in_charge = document.createElement("td");
+      const activities = document.createElement("td");
+
+      const number_text = document.createTextNode(index);
+      const name_text = document.createTextNode(university.getUniversityName());
+      const country_text = document.createTextNode(university.getCountry());
+      const in_charge_text = document.createTextNode(university.getPersonInCharge());
+      const activities_text = document.createTextNode(university.activitiesToString());
+      
+      number.appendChild(number_text);
+      name.appendChild(name_text);
+      country.appendChild(country_text);
+      in_charge.appendChild(in_charge_text);
+      activities.appendChild(activities_text);
+
+      record.appendChild(number);
+      record.appendChild(name);
+      record.appendChild(country);
+      record.appendChild(in_charge);
+      record.appendChild(activities);
+
+      rankingsBody.appendChild(record);
     }
 
 

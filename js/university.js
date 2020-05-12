@@ -25,4 +25,18 @@ class University {
         this.activities = activities;
     }
 
+    activitiesToString(){
+        let str = "";
+
+        for(let i = 0; i < this.activities.length; i++){
+            str += this.activities[i].getActivityName();
+
+            if(i != this.activities.length - 1){
+                str += ", ";
+            }
+        }
+
+        return str;
+    }
+
 }
