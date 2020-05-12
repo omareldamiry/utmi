@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="pracstyles.css">
+  <link rel="stylesheet" href="css/pracstyles.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Practice</title>
@@ -65,12 +65,12 @@
     </tbody>
   </table>
 
-  <script src="university.js"></script>
-  <script src="activity.js"></script>
+  <script src="js/university.js"></script>
+  <script src="js/activity.js"></script>
   <script type="text/javascript">
 
     window.onload = loadRankings;
-    
+
     const rankingsBody = document.querySelector("#rankings-table > tbody");
 
     function loadRankings() {
@@ -92,40 +92,40 @@
           };
           request2.send();
 
-          
-          
-
-
         } catch (e) {
 
 
           console.warn("Could not load");
+
         }
-
-
 
       };
       request.send();
 
     }
 
-function populateRankings(u, a){
-  for(let i = 0; i < u.length; i++){
-    let uni = new University(u[i].name);
-    let acts = [];
+    function populateRankings(u, a) {
+      for (let i = 0; i < u.length; i++) {
+        let uni = new University(u[i].name);
+        let acts = [];
 
-    for(let k = 0; k < a.length; k++){
-      let act = new Activity(a[k].name);
+        for (let j = 0; j < u[i].activities.length; j++) {
 
-      if(act.getActivityName() == u[i].activities[k]){
-        acts.push(act);
+          for(let k = 0; k < a.length; k++){
+            let act = new Activity(a[k].name);
+
+            if (u[i].activities[j] == act.getActivityName()) {
+              acts.push(act);
+
+              break;
+            }
+          }
+        }
+
+        uni.setActivity(acts);
+        console.log(uni);
       }
     }
-
-    uni.setActivity(acts);
-    console.log(uni);
-  }
-}
 
 
   </script>

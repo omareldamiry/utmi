@@ -2,5 +2,9 @@
     {
         "name":"University of Something",
         "activities": ["Exchange students program"]
+    },
+    {
+        "name":"University of Another Thing",
+        "activities": ["Exchange students program", "Annual Researchers Event"]
     }
 ]
