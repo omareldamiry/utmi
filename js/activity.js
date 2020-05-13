@@ -5,6 +5,6 @@ class Activity {
     }
 
     getActivityName() {
-        return this.activityName
+        return this.activityName;
     }
 }
