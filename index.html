@@ -106,7 +106,7 @@
 
     function populateRankings(u, a) {
       for (let i = 0; i < u.length; i++) {
-        let uni = new University(u[i].name);
+        let uni = new University(u[i].name, u[i].country, u[i].person);
         let acts = [];
 
         for (let j = 0; j < u[i].activities.length; j++) {

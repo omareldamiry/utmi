@@ -1,10 +1,14 @@
 [
     {
         "name":"University of Something",
+        "country": "Bangladesh",
+        "person": "Raqib",
         "activities": ["Exchange students program"]
     },
     {
         "name":"University of Another Thing",
+        "country": "Egypt",
+        "person": "Moaid",
         "activities": ["Exchange students program", "Annual Researchers Event"]
     }
 ]
