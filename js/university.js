@@ -4,6 +4,10 @@ class University {
         this.country = country;
         this.activities = []; //?? HOW TO ASSOCIATE?? 
         this.person = personInCharge;
+
+        if(!isCountry(this.country)){
+            this.country = "";
+        }
     }
 
     getUniversityName() {
