@@ -5,7 +5,7 @@ class University {
         this.activities = []; //?? HOW TO ASSOCIATE?? 
         this.person = personInCharge;
 
-        if(!isCountry(this.country)){
+        if(!Country.isCountry(country)){
             this.country = "";
         }
     }

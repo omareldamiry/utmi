@@ -8,124 +8,17 @@
   <title>Practice</title>
 </head>
 
-<body>
+<body> 
+  
 
   <p class="first">List Of Universities</p>
 
-  <table id="rankings-table" class="content-table">
- 
-    <hr>
-
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>Country</th>
-        <th>In-Charge</th>
-        <th>Activities</th>
-      </tr>
-    </thead>
-    <tbody>
-      <p>All data apperaing in this table are dummy data.</p>
-    </tbody>
-  </table>
-
+  <div></div>
+  
   <script src="js/country.js"></script>
   <script src="js/university.js"></script>
   <script src="js/activity.js"></script>
-  <script type="text/javascript">
-
-    window.onload = loadRankings;
-
-    const rankingsBody = document.querySelector("#rankings-table > tbody");
-
-    function loadRankings() {
-
-      const request = new XMLHttpRequest();
-      const request2 = new XMLHttpRequest();
-
-      request.open("get", "data/rankings.json", true);
-      request.onload = () => {
-
-        try {
-          const universites = JSON.parse(request.responseText);
-
-          request2.open("get", "data/activities.json", true);
-          request2.onload = () => {
-            const activities = JSON.parse(request2.responseText);
-
-            populateRankings(universites, activities);
-          };
-          request2.send();
-
-        } catch (e) {
-
-
-          console.warn("Could not load");
-
-        }
-
-      };
-      request.send();
-
-    }
-
-    function populateRankings(u, a) {
-      for (let i = 0; i < u.length; i++) {
-        let uni = new University(u[i].name, u[i].country, u[i].person);
-        let acts = [];
-
-        for (let j = 0; j < u[i].activities.length; j++) {
-
-          for(let k = 0; k < a.length; k++){
-            let act = new Activity(a[k].name);
-
-            if (u[i].activities[j] == act.getActivityName()) {
-              acts.push(act);
-
-              break;
-            }
-          }
-        }
-
-        uni.setActivity(acts);
-        generateRecord(uni, i+1);
-        console.log(uni);
-      }
-    }
-
-    function generateRecord(university, index){
-      
-      const record = document.createElement("tr");
-      const number = document.createElement("td");
-      const name = document.createElement("td");
-      const country = document.createElement("td");
-      const in_charge = document.createElement("td");
-      const activities = document.createElement("td");
-
-      const number_text = document.createTextNode(index);
-      const name_text = document.createTextNode(university.getUniversityName());
-      const country_text = document.createTextNode(university.getCountry());
-      const in_charge_text = document.createTextNode(university.getPersonInCharge());
-      const activities_text = document.createTextNode(university.activitiesToString());
-      
-      number.appendChild(number_text);
-      name.appendChild(name_text);
-      country.appendChild(country_text);
-      in_charge.appendChild(in_charge_text);
-      activities.appendChild(activities_text);
-
-      record.appendChild(number);
-      record.appendChild(name);
-      record.appendChild(country);
-      record.appendChild(in_charge);
-      record.appendChild(activities);
-
-      rankingsBody.appendChild(record);
-    }
-
-
-  </script>
+  <script src="js/app.js"></script>
 
 
 </body>
